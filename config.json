@@ -1,0 +1,14 @@
+{
+  "parser_extract_tables": false,
+  "parser_encoding": "utf-8",
+  "api_host": "0.0.0.0",
+  "api_port": 8000,
+  "api_debug": false,
+  "log_level": "INFO",
+  "log_file": null,
+  "output_dir": "output",
+  "openrouter_api_key": null,
+  "openrouter_model": "anthropic/claude-3-haiku",
+  "mcp_enabled": true,
+  "mcp_port": 3000
+}
