@@ -4,12 +4,19 @@ The core AI-powered QA automation engine for jom-QA. Parses SRS PDF documentatio
 
 ## 🚀 Key Innovation: .spec Format
 
-The `.spec` format is a lightweight, AI-optimized specification format designed specifically for jom-qa:
+The `.spec` format is a custom jom-qa specification format designed for AI token optimization:
 - **64.8% Token Reduction**: Compared to JSON format
 - **Strict Validation**: Ensures data integrity and consistency
 - **AI-Optimized**: Designed for maximum AI comprehension
 - **Human-Readable**: Clean, structured format for easy understanding
 - **Type Safety**: Built-in type hints for robust parsing
+
+### Format Structure
+- **Sections**: `## SECTION_NAME` for logical grouping
+- **Key-Value Pairs**: `key: value <type>` with type hints
+- **List Items**: `- item` for hierarchical data
+- **Comments**: `# comment` for documentation
+- **Strict Validation**: Enforces structure and type safety
 
 ### Benchmark Results
 - **JSON Format**: 1,951 tokens
@@ -408,6 +415,41 @@ test_cases: 6 <int>
 ```
 
 ## 🔍 System Architecture
+
+### Complete QA Pipeline Flow
+
+```
+[ Raw SRS PDF ]
+       │
+       ▼ (1. Locally Extracted via pdfplumber)
+[ Stripped Clean Text ]
+       │
+       ▼ (2. Strict AI Engine / Pydantic Verification Layer)
+[ Schema-Validated AI Spec Object (Pydantic) ]
+       │
+       ├──▶ [ .spec Format (Text) ]  ← 64.8% token reduction
+       │
+       └──▶ [ JSON Format (Debug) ]
+       │
+       ▼ (3. AI Orchestrator / OpenRouter Core Router)
+[ Deterministic Integration Test Steps ]
+       │
+       ▼ (4. Framework Drivers Execution Layer)
+┌───────────────────────┬───────────────────────┐
+│                       │                       │
+▼ (Web Native)          ▼ (Mobile Native)       ▼ (Test Lab Agent)
+[ Playwright Driver ]   [ Flutter Marionette ]  [ q-apk Rust CLI ]
+       │                       │                       │
+       └───────────────────────┼───────────────────────┘
+                               │
+                               ▼ (5. Dynamic Feedback Loop)
+                [ Real-time UI Telemetry & Logs ]
+                               │
+                               ▼ (6. Final Sink)
+                [ jom-qa-panel Dashboard ]
+```
+
+### Architecture Components
 
 - **Local PDF Parsing**: Processes SRS documents locally to reduce API costs
 - **.spec Format**: Lightweight, AI-optimized specification format with 64.8% token reduction
