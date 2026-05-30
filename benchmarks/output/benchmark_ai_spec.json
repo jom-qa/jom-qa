@@ -1,0 +1,210 @@
+{
+  "spec_version": "2.0",
+  "project_name": "jom-QA Automated Project",
+  "project_description": "",
+  "modules": [
+    {
+      "module_id": "authentication-&-connection",
+      "module_name": "Authentication & Connection",
+      "description": "",
+      "requirements": [
+        {
+          "req_id": "FR-001",
+          "title": "Secure User Login",
+          "description": "The system must allow registered users to authenticate securely using an email and password. Upon successful authentication, the system must generate a secure JWT token and redirect the user to the main dashboard screen.",
+          "priority": "medium",
+          "acceptance_criteria": [],
+          "test_cases": [
+            {
+              "test_id": "TC-FR-001",
+              "name": "Test Secure User Login",
+              "description": "Automated test for Secure User Login",
+              "test_type": "regression",
+              "priority": "medium",
+              "preconditions": [],
+              "steps": [],
+              "expected_result": "Secure User Login should work correctly",
+              "tags": [],
+              "automated": true,
+              "playwright_script": null
+            }
+          ],
+          "dependencies": [],
+          "risk_level": "medium",
+          "complexity": "medium",
+          "estimated_effort": null
+        },
+        {
+          "req_id": "FR-002",
+          "title": "Flutter VM Service Connection",
+          "description": "The local runner must accept a valid WebSocket URI pointing to a running Flutter application's VM Service. The system must validate the connection handshake before enabling any live runtime interactions.",
+          "priority": "medium",
+          "acceptance_criteria": [],
+          "test_cases": [
+            {
+              "test_id": "TC-FR-002",
+              "name": "Test Flutter VM Service Connection",
+              "description": "Automated test for Flutter VM Service Connection",
+              "test_type": "regression",
+              "priority": "medium",
+              "preconditions": [],
+              "steps": [],
+              "expected_result": "Flutter VM Service Connection should work correctly",
+              "tags": [],
+              "automated": true,
+              "playwright_script": null
+            }
+          ],
+          "dependencies": [],
+          "risk_level": "medium",
+          "complexity": "medium",
+          "estimated_effort": null
+        }
+      ],
+      "dependencies": [],
+      "test_coverage": 0.0,
+      "risk_score": 0.0
+    },
+    {
+      "module_id": "test-orchestration",
+      "module_name": "Test Orchestration",
+      "description": "",
+      "requirements": [
+        {
+          "req_id": "FR-003",
+          "title": "Live UI Inspection",
+          "description": "The core engine must query the running Flutter app via Marionette to retrieve a list of interactive UI elements. Layout-only widgets like Paddings or Spacers must be filtered out locally to minimize token overhead.",
+          "priority": "medium",
+          "acceptance_criteria": [],
+          "test_cases": [
+            {
+              "test_id": "TC-FR-003",
+              "name": "Test Live UI Inspection",
+              "description": "Automated test for Live UI Inspection",
+              "test_type": "regression",
+              "priority": "medium",
+              "preconditions": [],
+              "steps": [],
+              "expected_result": "Live UI Inspection should work correctly",
+              "tags": [],
+              "automated": true,
+              "playwright_script": null
+            }
+          ],
+          "dependencies": [],
+          "risk_level": "medium",
+          "complexity": "medium",
+          "estimated_effort": null
+        },
+        {
+          "req_id": "FR-004",
+          "title": "Autonomous Action Execution",
+          "description": "Based on the AI model decision, the orchestrator must command the remote app to simulate user gestures including tap actions, text inputs into text fields, and scrolling routines.",
+          "priority": "medium",
+          "acceptance_criteria": [],
+          "test_cases": [
+            {
+              "test_id": "TC-FR-004",
+              "name": "Test Autonomous Action Execution",
+              "description": "Automated test for Autonomous Action Execution",
+              "test_type": "regression",
+              "priority": "medium",
+              "preconditions": [],
+              "steps": [],
+              "expected_result": "Autonomous Action Execution should work correctly",
+              "tags": [],
+              "automated": true,
+              "playwright_script": null
+            }
+          ],
+          "dependencies": [],
+          "risk_level": "medium",
+          "complexity": "medium",
+          "estimated_effort": null
+        }
+      ],
+      "dependencies": [],
+      "test_coverage": 0.0,
+      "risk_score": 0.0
+    },
+    {
+      "module_id": "automated-bug-reporting",
+      "module_name": "Automated Bug Reporting",
+      "description": "",
+      "requirements": [
+        {
+          "req_id": "FR-005",
+          "title": "Trello Ticket Generation",
+          "description": "When an unexpected error or assertion failure is captured during a test run, the system must automatically create a new card in the user's configured Trello board under the 'Bug Reports' list.",
+          "priority": "medium",
+          "acceptance_criteria": [],
+          "test_cases": [
+            {
+              "test_id": "TC-FR-005",
+              "name": "Test Trello Ticket Generation",
+              "description": "Automated test for Trello Ticket Generation",
+              "test_type": "regression",
+              "priority": "medium",
+              "preconditions": [],
+              "steps": [],
+              "expected_result": "Trello Ticket Generation should work correctly",
+              "tags": [],
+              "automated": true,
+              "playwright_script": null
+            }
+          ],
+          "dependencies": [],
+          "risk_level": "medium",
+          "complexity": "medium",
+          "estimated_effort": null
+        },
+        {
+          "req_id": "FR-006",
+          "title": "GitHub Issue Dispatch",
+          "description": "The system must format error logs and failure context into Markdown syntax and automatically open a new issue in the specified GitHub repository containing the requirement traceability tracking tags.",
+          "priority": "medium",
+          "acceptance_criteria": [],
+          "test_cases": [
+            {
+              "test_id": "TC-FR-006",
+              "name": "Test GitHub Issue Dispatch",
+              "description": "Automated test for GitHub Issue Dispatch",
+              "test_type": "regression",
+              "priority": "medium",
+              "preconditions": [],
+              "steps": [],
+              "expected_result": "GitHub Issue Dispatch should work correctly",
+              "tags": [],
+              "automated": true,
+              "playwright_script": null
+            }
+          ],
+          "dependencies": [],
+          "risk_level": "medium",
+          "complexity": "medium",
+          "estimated_effort": null
+        }
+      ],
+      "dependencies": [],
+      "test_coverage": 0.0,
+      "risk_score": 0.0
+    }
+  ],
+  "metadata": {
+    "total_lines": 28,
+    "parser_version": "2.0",
+    "modules_found": 3,
+    "requirements_found": 6,
+    "lines_processed": 28
+  },
+  "created_at": "2026-05-30T03:33:49.182992",
+  "updated_at": "2026-05-30T03:33:49.183000",
+  "token_optimized": true,
+  "compression_ratio": null,
+  "ai_model_target": "claude-3-haiku",
+  "external_refs": {},
+  "internal_refs": {},
+  "total_requirements": 6,
+  "total_test_cases": 6,
+  "automation_coverage": 100.0
+}

@@ -30,6 +30,13 @@ from .qa_workflow import (
     QAWorkflowConfig,
     run_qa_workflow
 )
+from .spec_format import (
+    SpecParser,
+    SpecGenerator,
+    SpecConverter as SpecFormatConverter,
+    SpecTokenType,
+    calculate_spec_token_count
+)
 
 __all__ = [
     'LocalSRSParser',
@@ -54,5 +61,10 @@ __all__ = [
     'TestResult',
     'QAWorkflow',
     'QAWorkflowConfig',
-    'run_qa_workflow'
+    'run_qa_workflow',
+    'SpecParser',
+    'SpecGenerator',
+    'SpecFormatConverter',
+    'SpecTokenType',
+    'calculate_spec_token_count'
 ]

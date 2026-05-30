@@ -7,6 +7,7 @@ from pathlib import Path
 from pydantic import BaseModel, Field, validator
 from dataclasses import dataclass, field
 from .ai_spec import AISpec, SpecConverter
+from .spec_format import SpecGenerator
 
 # Configure logging
 logging.basicConfig(
@@ -357,4 +358,24 @@ class LocalSRSParser:
             json.dump(ai_spec.model_dump(), f, indent=2, ensure_ascii=False)
         
         logger.info(f"Saved AI-optimized spec to {output_path}")
+        return str(output_path)
+    
+    def save_spec(self, output_path: str, optimize_tokens: bool = True, target_tokens: int = 4000) -> str:
+        """
+        Parse and save AI-optimized specification to .spec file.
+        
+        Args:
+            output_path: Path to save .spec file
+            optimize_tokens: Whether to optimize for minimal token consumption
+            target_tokens: Target token limit for optimization
+            
+        Returns:
+            Path to saved file
+        """
+        ai_spec = self.to_ai_spec(optimize_tokens=optimize_tokens, target_tokens=target_tokens)
+        
+        spec_generator = SpecGenerator(strict=True)
+        output_path = spec_generator.save(ai_spec, output_path)
+        
+        logger.info(f"Saved .spec file to {output_path}")
         return str(output_path)

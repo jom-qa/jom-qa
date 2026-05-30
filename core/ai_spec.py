@@ -119,7 +119,7 @@ class ModuleSpec(BaseModel):
 
 class AISpec(BaseModel):
     """
-    AI-optimized specification format inspired by spec-up.
+    AI-optimized specification format.
     Designed for minimal AI token consumption while maximizing QA automation capabilities.
     """
     spec_version: str = Field(default="2.0", description="Specification format version")
@@ -137,7 +137,7 @@ class AISpec(BaseModel):
     compression_ratio: Optional[float] = Field(None, description="Token compression ratio achieved")
     ai_model_target: str = Field(default="claude-3-haiku", description="Target AI model for processing")
     
-    # Cross-references (inspired by spec-up)
+    # Cross-references
     external_refs: Dict[str, str] = Field(default_factory=dict, description="External specification references")
     internal_refs: Dict[str, List[str]] = Field(default_factory=dict, description="Internal cross-references")
     

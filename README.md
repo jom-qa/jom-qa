@@ -1,11 +1,27 @@
 # jom-QA Engine
 
-The core AI-powered QA automation engine for jom-QA. Parses SRS PDF documentation locally and converts them into AI-optimized JSON specifications, reducing AI API token usage by up to 80%. Features professional Playwright integration and intelligent QA workflows.
+The core AI-powered QA automation engine for jom-QA. Parses SRS PDF documentation locally and converts them into AI-optimized `.spec` format, reducing AI API token usage by up to 80%. Features professional Playwright integration and intelligent QA workflows.
+
+## 🚀 Key Innovation: .spec Format
+
+The `.spec` format is a lightweight, AI-optimized specification format designed specifically for jom-qa:
+- **64.8% Token Reduction**: Compared to JSON format
+- **Strict Validation**: Ensures data integrity and consistency
+- **AI-Optimized**: Designed for maximum AI comprehension
+- **Human-Readable**: Clean, structured format for easy understanding
+- **Type Safety**: Built-in type hints for robust parsing
+
+### Benchmark Results
+- **JSON Format**: 1,951 tokens
+- **.spec Format**: 687 tokens
+- **Token Savings**: 1,264 tokens (64.8% reduction)
+- **Compression Ratio**: 0.35x
 
 ## 🚀 Features
 
 ### Core Capabilities
-- **AI-Optimized Specifications**: Converts SRS to token-optimized JSON specs inspired by spec-up
+- **.spec Format**: Lightweight, AI-optimized specification format with 64.8% token reduction
+- **AI-Optimized Specifications**: Converts SRS to token-optimized specs
 - **Playwright Integration**: Professional browser automation for end-to-end testing
 - **Intelligent QA Workflows**: Adaptive test execution with priority-based scheduling
 - **Token Optimization**: Reduces AI consumption by up to 80% through smart preprocessing
@@ -13,7 +29,7 @@ The core AI-powered QA automation engine for jom-QA. Parses SRS PDF documentatio
 - **Error Handling**: Comprehensive error handling and validation
 - **Logging System**: Built-in logging for debugging and monitoring
 - **Configuration Management**: Flexible configuration via file or environment variables
-- **REST API**: FastAPI-based server for remote parsing and AI spec generation
+- **REST API**: FastAPI-based server for remote parsing and .spec generation
 - **Multiple Pattern Support**: Supports various SRS formats (FR-XXX, REQ-XXX, numbered sections, etc.)
 - **Priority Extraction**: Automatically extracts requirement priorities
 - **Metadata Tracking**: Tracks parsing statistics and version information
@@ -36,6 +52,7 @@ jom-qa/
 │   ├── __init__.py
 │   ├── parser.py               # Enhanced SRS PDF to Structural JSON parser
 │   ├── ai_spec.py              # AI-optimized specification format
+│   ├── spec_format.py          # .spec file format parser and generator
 │   ├── playwright_automation.py # Playwright integration for browser automation
 │   └── qa_workflow.py          # Professional QA workflow engine
 │
@@ -54,8 +71,12 @@ jom-qa/
 │
 ├── examples/
 │   ├── ai_spec_example.py      # Example: Generate AI-optimized specs
+│   ├── spec_format_example.py  # Example: Generate .spec format
 │   ├── playwright_example.py   # Example: Playwright automation
 │   └── qa_workflow_example.py # Example: Complete QA workflow
+
+├── benchmarks/
+│   └── token_benchmark.py      # Benchmark JSON vs .spec token usage
 │
 ├── config.py                   # Configuration management
 ├── config.json                 # Default configuration file
@@ -77,7 +98,25 @@ playwright install
 
 ## 📖 Usage
 
-### Generate AI-Optimized Specifications
+### Generate .spec Format (Recommended for AI)
+
+```python
+from core import LocalSRSParser
+from config import get_config
+
+# Load configuration
+config = get_config()
+config.setup_logging()
+
+# Initialize parser
+parser = LocalSRSParser("srs_test.pdf")
+
+# Generate .spec format (64.8% token reduction)
+spec_path = parser.save_spec("output/srs_test.spec", optimize_tokens=True)
+print(f".spec file saved to: {spec_path}")
+```
+
+### Generate AI-Optimized JSON Format
 
 ```python
 from core import LocalSRSParser
@@ -98,7 +137,7 @@ ai_spec = parser.to_ai_spec(optimize_tokens=True, target_tokens=4000)
 token_estimate = ai_spec.get_token_estimate()
 print(f"Estimated tokens: {token_estimate['estimated_tokens']}")
 
-# Save AI spec
+# Save AI spec (JSON format)
 parser.save_ai_spec("output/ai_spec.json")
 ```
 
@@ -201,12 +240,24 @@ uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
 
 - `POST /parse` - Parse SRS PDF from file path
 - `POST /upload` - Upload and parse PDF file
-- `POST /ai-spec` - Generate AI-optimized specification from PDF
-- `POST /ai-spec/upload` - Upload PDF and generate AI-optimized spec
+- `POST /ai-spec` - Generate AI-optimized specification from PDF (supports .spec and JSON formats)
+- `POST /ai-spec/upload` - Upload PDF and generate AI-optimized spec (supports .spec and JSON formats)
 - `GET /ai-spec/token-estimate/{job_id}` - Get token consumption estimate
 - `GET /result/{job_id}` - Retrieve parsed result
 - `DELETE /result/{job_id}` - Delete parsed result
 - `GET /health` - Health check endpoint
+
+### Running Benchmarks
+
+```bash
+# Run token usage benchmark
+python benchmarks/token_benchmark.py
+
+# This will compare JSON vs .spec formats and show:
+# - Token reduction percentage
+# - Compression ratio
+# - Detailed statistics
+```
 
 ### Running Tests
 
@@ -258,34 +309,52 @@ And multiple module formats:
 
 ## 📊 Output Format
 
-### Basic SRS Format
-```json
-{
-  "project_name": "jom-QA Automated Project",
-  "modules": [
-    {
-      "module_name": "Authentication",
-      "requirements": [
-        {
-          "req_id": "FR-001",
-          "title": "User Login",
-          "description": "User should be able to login with email and password",
-          "priority": "high"
-        }
-      ]
-    }
-  ],
-  "metadata": {
-    "total_lines": 150,
-    "parser_version": "2.0",
-    "modules_found": 5,
-    "requirements_found": 25,
-    "lines_processed": 150
-  }
-}
+### .spec Format (Recommended for AI)
+The `.spec` format is a lightweight, AI-optimized specification format:
+
+```spec
+# jom-qa Specification Format
+# Generated: 2026-05-30T03:35:57.072579
+
+## METADATA
+spec_version: 2.0 <str>
+project_name: jom-QA Automated Project <str>
+token_optimized: true <bool>
+ai_model_target: claude-3-haiku <str>
+total_requirements: 6 <int>
+total_test_cases: 6 <int>
+automation_coverage: 100.0 <float>
+
+## MODULES
+- module: Authentication & Connection <str>
+  module_id: authentication-&-connection <str>
+  requirements_count: 2 <int>
+  - requirement: FR-001 <str>
+    title: Secure User Login <str>
+    priority: medium <str>
+    test_cases_count: 1 <int>
+    - test_case: TC-FR-001 <str>
+      name: Test Secure User Login <str>
+      type: regression <str>
+      priority: medium <str>
+      automated: true <bool>
+      steps_count: 0 <int>
+
+## TOKEN_ESTIMATE
+total_characters: 2751 <int>
+estimated_tokens: 687 <int>
+modules: 3 <int>
+requirements: 6 <int>
+test_cases: 6 <int>
 ```
 
-### AI-Optimized Spec Format
+**Benefits:**
+- 64.8% token reduction compared to JSON
+- Strict validation with type hints
+- Human-readable structure
+- AI-optimized for maximum comprehension
+
+### JSON Format (For Debugging)
 ```json
 {
   "spec_version": "2.0",
@@ -341,7 +410,8 @@ And multiple module formats:
 ## 🔍 System Architecture
 
 - **Local PDF Parsing**: Processes SRS documents locally to reduce API costs
-- **AI-Optimized Specifications**: Converts SRS to token-efficient JSON specs inspired by spec-up
+- **.spec Format**: Lightweight, AI-optimized specification format with 64.8% token reduction
+- **AI-Optimized Specifications**: Converts SRS to token-efficient specs
 - **Playwright Integration**: Professional browser automation for end-to-end testing
 - **Intelligent QA Workflows**: Adaptive test execution with priority-based scheduling
 - **Flutter Integration**: MCP/CLI integration for live UI element inspection
